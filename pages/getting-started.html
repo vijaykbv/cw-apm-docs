@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Getting Started — CloudWatch APM</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="site">
+    <aside class="left-nav" id="left-nav"></aside>
+    <main class="content">
+      <header><h1>Getting Started with CloudWatch APM</h1></header>
+      <article>
+        <section>
+          <h2>Quick Navigation by Role</h2>
+          <p>Developers → <a href="#developers">Instrument Your First Application</a> · Operators → <a href="#operators">Monitor Production Systems</a> · Architects → <a href="#architects">Design Your Observability Strategy</a></p>
+        </section>
+
+        <section>
+          <h2>What is CloudWatch APM?</h2>
+          <p>CloudWatch Application Performance Monitoring (APM) is a comprehensive observability solution built on Application Signals that provides end-to-end visibility across your applications — from backend services to frontend user experiences.</p>
+          <p>Key capabilities include automatic service discovery, distributed tracing, real-time metrics, service maps, SLO tracking, and intelligent alerting.</p>
+        </section>
+
+        <section>
+          <h2>The Three Pillars of Application Signals</h2>
+          <h3>Application Performance Monitoring (APM)</h3>
+          <p>Monitor backend services, APIs, and microservices. Automatic instrumentation and distributed tracing reveal request flows and bottlenecks.</p>
+          <ul>
+            <li>Distributed traces and service dependency maps</li>
+            <li>Performance metrics: latency (P50/P90/P99), throughput, error rates</li>
+            <li>Automatic service discovery for ECS, EKS, Lambda, and EC2</li>
+          </ul>
+
+          <h3>Real User Monitoring (RUM)</h3>
+          <p>Capture real user experiences across browsers, devices, and geographies. Track page performance, JS errors, and Core Web Vitals.</p>
+
+          <h3>Synthetic Monitoring</h3>
+          <p>Run scheduled tests and scripted browser checks from multiple regions to detect issues before users do.</p>
+        </section>
+
+        <section>
+          <h2>Getting Started Path</h2>
+          <ol>
+            <li><strong>Phase 1 — Start with APM (Week 1):</strong> Enable Application Signals for backend services and establish performance baselines.</li>
+            <li><strong>Phase 2 — Add Synthetics (Week 2–3):</strong> Create canaries for critical journeys and set up proactive monitoring.</li>
+            <li><strong>Phase 3 — Enable RUM (Week 4+):</strong> Add RUM to your web application and correlate frontend metrics with backend traces.</li>
+          </ol>
+        </section>
+
+        <section id="developers">
+          <h2>Developers: Instrument Your First Application</h2>
+          <p>In ~15 minutes you'll have APM traces and metrics collecting for supported runtimes with zero code changes using auto-instrumentation.</p>
+
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>Application running on AWS (ECS, EKS, EC2, or Lambda)</li>
+            <li>Supported runtime: Java, Python, .NET, Node.js, or Go</li>
+            <li>IAM permissions to enable Application Signals</li>
+          </ul>
+
+          <h3>Step 1: Choose Instrumentation</h3>
+          <ul>
+            <li><strong>Auto-Instrumentation</strong> — Zero code changes; recommended for quick starts.</li>
+            <li><strong>OpenTelemetry Manual Instrumentation</strong> — Full control and portability.</li>
+            <li><strong>AWS Distro for OpenTelemetry (ADOT)</strong> — AWS-optimized OTel collector.</li>
+          </ul>
+
+          <h3>Step 2: Enable Application Signals</h3>
+          <p>Follow the platform-specific enablement instructions for EKS, ECS, or Lambda in the developer guide. After enabling, wait 5–10 minutes for data to appear in the console.</p>
+
+          <h3>Step 3: Verify APM Data</h3>
+          <ol>
+            <li>Open the CloudWatch Console → Application Signals</li>
+            <li>Check the Service Map for discovered services</li>
+            <li>Click a service to view distributed traces and metrics</li>
+          </ol>
+
+          <h3>Troubleshooting</h3>
+          <ul>
+            <li>APM traces missing: verify IAM permissions and that the agent/collector is running.</li>
+            <li>RUM not appearing: ensure the RUM snippet loads and app ID/region are correct.</li>
+            <li>Synthetics failing: check canary logs and network access from the canary VPC.</li>
+          </ul>
+        </section>
+
+        <section id="operators">
+          <h2>Operators: Monitor Production Systems</h2>
+          <p>Set up monitoring, alerting, and dashboards across APM, RUM, and Synthetics.</p>
+          <h3>Checklist</h3>
+          <ul>
+            <li>Service map includes all critical services</li>
+            <li>APM dashboards for latency, errors, throughput</li>
+            <li>SLOs and composite alerts spanning signals</li>
+            <li>Canaries for critical journeys and multi-region monitoring</li>
+          </ul>
+
+          <h3>Dashboards & Alerts</h3>
+          <p>Create a unified dashboard using the Application Signals template and add widgets for APM golden signals, RUM metrics, and Synthetics health. Use composite alarms to correlate across signals.</p>
+        </section>
+
+        <section id="architects">
+          <h2>Architects: Design Your Observability Strategy</h2>
+          <p>Choose adoption, instrumentation, and retention strategies that scale with your organization.</p>
+          <h3>Decision Framework</h3>
+          <ul>
+            <li><strong>Adoption:</strong> Start with APM, add Synthetics, then RUM.</li>
+            <li><strong>Instrumentation:</strong> OpenTelemetry for portability; AWS native for faster time-to-value.</li>
+            <li><strong>Multi-Cloud:</strong> Consider OTel bridge if you need portability + AWS integration.</li>
+            <li><strong>Retention:</strong> Use hot/warm/cold tiers and archive traces to S3 for cost control.</li>
+          </ul>
+
+          <h3>Patterns & Examples</h3>
+          <p>Common patterns include EKS microservices with ADOT, serverless Lambda instrumentation via layers, and hybrid setups using OTel collectors.</p>
+        </section>
+
+        <section>
+          <h2>Next Steps & Resources</h2>
+          <ul>
+            <li>See sample apps on GitHub for quick demos</li>
+            <li>Follow language guides for manual instrumentation</li>
+            <li>Create a canary for a critical path and add RUM to your frontend</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </div>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
