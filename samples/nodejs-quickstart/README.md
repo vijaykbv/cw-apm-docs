@@ -41,3 +41,18 @@ Links
 - OpenTelemetry Node SDK: https://github.com/open-telemetry/opentelemetry-js
 - ADOT Collector docs: https://aws-otel.github.io/docs
 
+ADOT Collector (send traces to AWS)
+
+1. Use the provided ADOT collector config to export traces to AWS X-Ray and metrics to CloudWatch.
+
+```bash
+# run ADOT collector (example with Docker)
+docker run --rm -p 4317:4317 -v "$PWD/adot-collector-config.yaml":/etc/adot-config.yaml public.ecr.aws/aws-observability/aws-otel-collector:latest --config /etc/adot-config.yaml
+```
+
+2. Apply collector IAM policy to the EC2/role running the collector (example policy file: `iam-collector-policy.json`). The policy grants permissions needed to send traces/metrics/logs to AWS services.
+
+3. Start the sample app with `npm start` and generate traffic with `./generate_requests.sh`. After a few minutes, traces should appear in AWS X-Ray and metrics in CloudWatch (or in the CloudWatch Application Signals console if configured).
+
+IAM policy example: `iam-collector-policy.json` (in this folder) — review and scope to least privilege before use.
+
