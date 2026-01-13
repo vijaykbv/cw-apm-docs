@@ -13,3 +13,16 @@ header h1{margin:0 0 8px 0;font-size:20px}
 article{background:#fff;padding:22px;border-radius:8px;box-shadow:0 1px 0 rgba(9,10,11,0.02)}
 .search{margin-bottom:12px}
 .active{background:linear-gradient(90deg,var(--accent)10%,transparent 40%);color:white}
+
+/* New-to-APM callout box */
+.new-to-apm.box{
+	border-left:4px solid var(--accent);
+	background:linear-gradient(90deg, rgba(11,105,255,0.06), rgba(11,105,255,0.02));
+	padding:18px 20px;
+	margin-bottom:18px;
+	border-radius:8px;
+	box-shadow:0 6px 18px rgba(11,105,255,0.06);
+}
+.new-to-apm.box h2{margin:0 0 8px 0;color:var(--accent);font-size:18px}
+.new-to-apm.box code{background:#eef6ff;padding:2px 6px;border-radius:4px}
+.new-to-apm.box a{font-weight:600;color:var(--accent)}
