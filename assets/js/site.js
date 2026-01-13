@@ -47,6 +47,7 @@ function injectFeedbackForm(){
       <div class="pat-help">
         <details>
           <summary>How to create a GitHub Personal Access Token (PAT)</summary>
+          <div class="pat-image"><img src="assets/images/pat-help.svg" alt="PAT creation steps graphic"></div>
           <ol>
             <li>Open <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">GitHub Personal Access Tokens</a>.</li>
             <li>Click <em>Generate new token</em> (classic or fine-grained), set an expiry.</li>

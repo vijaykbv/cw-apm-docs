@@ -48,3 +48,5 @@ article{background:#fff;padding:22px;border-radius:8px;box-shadow:0 1px 0 rgba(9
 .pat-help summary{cursor:pointer;font-weight:600}
 .pat-help ol{margin:8px 0 0 18px;color:#374151}
 .pat-help a{color:var(--accent)}
+
+.pat-image img{width:100%;border-radius:6px;border:1px solid #e6e9ef;margin-top:8px}
