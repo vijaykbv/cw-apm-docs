@@ -15,14 +15,23 @@ article{background:#fff;padding:22px;border-radius:8px;box-shadow:0 1px 0 rgba(9
 .active{background:linear-gradient(90deg,var(--accent)10%,transparent 40%);color:white}
 
 /* New-to-APM callout box */
+.right-sidebar{width:320px;padding:20px}
+
+/* New-to-APM callout box (light grey for sidebar) */
 .new-to-apm.box{
-	border-left:4px solid var(--accent);
-	background:linear-gradient(90deg, rgba(11,105,255,0.06), rgba(11,105,255,0.02));
-	padding:18px 20px;
+	border:1px solid #e6e9ef;
+	background:#f7f8fb;
+	padding:16px;
 	margin-bottom:18px;
 	border-radius:8px;
-	box-shadow:0 6px 18px rgba(11,105,255,0.06);
 }
-.new-to-apm.box h2{margin:0 0 8px 0;color:var(--accent);font-size:18px}
-.new-to-apm.box code{background:#eef6ff;padding:2px 6px;border-radius:4px}
+.new-to-apm.box h2{margin:0 0 8px 0;color:var(--text);font-size:18px}
+.new-to-apm.box code{background:#eef2f7;padding:2px 6px;border-radius:4px}
 .new-to-apm.box a{font-weight:600;color:var(--accent)}
+
+@media (max-width: 900px){
+	.site{flex-direction:column}
+	.left-nav{width:100%}
+	.right-sidebar{width:100%;order:2}
+	.content{order:1}
+}
