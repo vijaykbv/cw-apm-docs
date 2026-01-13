@@ -43,3 +43,8 @@ article{background:#fff;padding:22px;border-radius:8px;box-shadow:0 1px 0 rgba(9
 .feedback-actions{margin-top:8px}
 .feedback-box button{background:var(--accent);color:#fff;padding:8px 12px;border:none;border-radius:6px;cursor:pointer}
 .feedback-note{font-size:12px;color:#6b7280;margin-top:8px}
+
+.pat-help details{margin-top:8px}
+.pat-help summary{cursor:pointer;font-weight:600}
+.pat-help ol{margin:8px 0 0 18px;color:#374151}
+.pat-help a{color:var(--accent)}

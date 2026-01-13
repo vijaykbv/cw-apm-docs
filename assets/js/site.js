@@ -44,7 +44,18 @@ function injectFeedbackForm(){
         <button id="feedback-submit">Submit Feedback</button>
         <span id="feedback-status" style="margin-left:8px"></span>
       </div>
-      <p class="feedback-note">Note: reviewers will be asked for a GitHub personal access token with repo write permission to append feedback to docs/Feedback.md.</p>
+      <div class="pat-help">
+        <details>
+          <summary>How to create a GitHub Personal Access Token (PAT)</summary>
+          <ol>
+            <li>Open <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">GitHub Personal Access Tokens</a>.</li>
+            <li>Click <em>Generate new token</em> (classic or fine-grained), set an expiry.</li>
+            <li>Give the token the <code>repo</code> or repository contents scope so it can update files.</li>
+            <li>Generate and copy the token — paste it into the prompt when submitting feedback.</li>
+          </ol>
+        </details>
+      </div>
+      <p class="feedback-note">Note: reviewers will be asked for a GitHub personal access token with repo write permission to append feedback to docs/Feedback.md. The token is used only for this request and not stored.</p>
     </div>
   `;
   // insert at end of main content
