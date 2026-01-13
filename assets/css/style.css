@@ -35,3 +35,11 @@ article{background:#fff;padding:22px;border-radius:8px;box-shadow:0 1px 0 rgba(9
 	.right-sidebar{width:100%;order:2}
 	.content{order:1}
 }
+
+/* Feedback box styles */
+.feedback-wrapper{margin-top:18px}
+.feedback-box{border:1px solid #e6e9ef;background:#fff;padding:12px;border-radius:8px}
+.feedback-box textarea{width:100%;padding:8px;border:1px solid #d9e2f0;border-radius:6px;font-family:inherit}
+.feedback-actions{margin-top:8px}
+.feedback-box button{background:var(--accent);color:#fff;padding:8px 12px;border:none;border-radius:6px;cursor:pointer}
+.feedback-note{font-size:12px;color:#6b7280;margin-top:8px}

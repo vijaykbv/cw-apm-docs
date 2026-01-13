@@ -30,3 +30,83 @@ function buildNav(){
 document.addEventListener('DOMContentLoaded',()=>{
   buildNav();
 });
+
+// Inject feedback form into pages (bottom-right) and handle submit
+function injectFeedbackForm(){
+  const container=document.querySelector('main') || document.body;
+  const wrapper=document.createElement('div');
+  wrapper.className='feedback-wrapper';
+  wrapper.innerHTML=`
+    <div class="feedback-box">
+      <label for="feedback-input"><strong>Give feedback (max 200 chars)</strong></label>
+      <textarea id="feedback-input" maxlength="200" rows="3" placeholder="Enter feedback..."></textarea>
+      <div class="feedback-actions">
+        <button id="feedback-submit">Submit Feedback</button>
+        <span id="feedback-status" style="margin-left:8px"></span>
+      </div>
+      <p class="feedback-note">Note: reviewers will be asked for a GitHub personal access token with repo write permission to append feedback to docs/Feedback.md.</p>
+    </div>
+  `;
+  // insert at end of main content
+  container.appendChild(wrapper);
+
+  document.getElementById('feedback-submit').addEventListener('click', async ()=>{
+    const txt=document.getElementById('feedback-input').value.trim();
+    const status=document.getElementById('feedback-status');
+    if(!txt){ status.textContent='Please enter feedback.'; return; }
+    if(txt.length>200){ status.textContent='Feedback too long.'; return; }
+
+    const token=prompt('To submit feedback, please paste a GitHub Personal Access Token (repo:contents write access). The token will not be stored.');
+    if(!token){ status.textContent='Submission cancelled.'; return; }
+
+    status.textContent='Submitting...';
+    try{
+      const owner='vijaykbv';
+      const repo='cw-apm-docs';
+      const path='docs/Feedback.md';
+      const apiBase=`https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+      // fetch existing file
+      let res=await fetch(apiBase,{headers:{Authorization:'token '+token,'Accept':'application/vnd.github.v3+json'}});
+      let sha=null, existing='';
+      if(res.status===200){
+        const j=await res.json();
+        sha=j.sha; existing=atob(j.content.replace(/\n/g,'')).toString();
+      } else if(res.status===404){
+        existing=''; sha=null;
+      } else {
+        throw new Error('Unable to read Feedback file: '+res.status);
+      }
+
+      const when=new Date().toISOString();
+      const page=location.pathname + location.search;
+      const entry=`\n- [${when}] (${page}) ${txt}`;
+      const newContent=(existing + entry).replace(/^\s+/,'');
+      const b64= btoa(unescape(encodeURIComponent(newContent)));
+
+      const body={
+        message:`Add feedback from page ${page}`,
+        content: b64,
+        branch: 'main'
+      };
+      if(sha) body.sha=sha;
+
+      res=await fetch(apiBase,{
+        method:'PUT',
+        headers:{Authorization:'token '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+        body: JSON.stringify(body)
+      });
+      if(!res.ok) throw new Error('GitHub API error: '+res.status);
+      status.textContent='Thanks — feedback submitted.';
+      document.getElementById('feedback-input').value='';
+    }catch(err){
+      console.error(err);
+      status.textContent='Error: '+err.message;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  injectFeedbackForm();
+});
+
