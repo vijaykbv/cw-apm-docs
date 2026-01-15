@@ -60,7 +60,7 @@ body {
 
 /* Left navigation - AWS style */
 .left-nav {
-  width: var(--nav-width);
+  width: 20%;
   background-color: var(--aws-gray-100);
   border-right: 1px solid var(--aws-gray-300);
   padding: 20px 0;
@@ -68,6 +68,7 @@ body {
   position: fixed;
   height: calc(100vh - var(--header-height));
   top: var(--header-height);
+  left: 0;
 }
 
 .left-nav h3 {
@@ -114,10 +115,11 @@ body {
 
 /* Main content area */
 .content {
-  flex: 1;
-  margin-left: var(--nav-width);
+  width: 60%;
+  margin-left: 20%;
   padding: 32px 40px;
-  max-width: 1200px;
+  max-width: none;
+  min-height: calc(100vh - var(--header-height));
 }
 
 header h1 {
@@ -298,11 +300,12 @@ section h4:first-child {
 /* Responsive design */
 @media (max-width: 1024px) {
   .left-nav {
-    width: 260px;
+    width: 25%;
   }
 
   .content {
-    margin-left: 260px;
+    width: 65%;
+    margin-left: 25%;
   }
 }
 
@@ -320,6 +323,7 @@ section h4:first-child {
   }
 
   .content {
+    width: 100%;
     margin-left: 0;
     padding: 20px;
   }
