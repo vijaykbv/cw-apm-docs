@@ -115,7 +115,7 @@ body {
 
 /* Main content area */
 .content {
-  width: 60%;
+  width: 75%;
   margin-left: 20%;
   padding: 32px 40px;
   max-width: none;
@@ -300,12 +300,12 @@ section h4:first-child {
 /* Responsive design */
 @media (max-width: 1024px) {
   .left-nav {
-    width: 25%;
+    width: 20%;
   }
 
   .content {
-    width: 65%;
-    margin-left: 25%;
+    width: 75%;
+    margin-left: 20%;
   }
 }
 
