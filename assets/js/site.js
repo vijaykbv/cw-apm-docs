@@ -3,7 +3,7 @@ const NAV = [
   {title:'GETTING STARTED', items:[{title:'Introduction', href:'pages/getting-started.html'},{title:'Quick Start', href:'pages/quick-start.html'},{title:'Setup by Compute Type', href:'pages/setup-by-compute.html'},{title:'Setup by Language', href:'pages/setup-by-language.html'}]},
   {title:'CONCEPTS & FUNDAMENTALS', items:[{title:'Core Concepts', href:'pages/concepts.html'},{title:'Instrumentation', href:'pages/instrumentation.html'},{title:'Data Model', href:'pages/data-model.html'}]},
   {title:'IMPLEMENTATION GUIDES', items:[{title:'Instrumentation', href:'pages/implementation.html'},{title:'Language-Specific Guides', href:'pages/language-guides.html'},{title:'Service Integration', href:'pages/service-integration.html'}]},
-  {title:'FEATURES & CAPABILITIES', items:[{title:'Distributed Tracing', href:'pages/features.html'},{title:'Service Map', href:'pages/service-map.html'},{title:'Performance Analytics', href:'pages/performance-analytics.html'}]},
+  {title:'FEATURES & CAPABILITIES', items:[{title:'Distributed Tracing', href:'pages/features.html'},{title:'Application Map', href:'pages/application-map.html'},{title:'Performance Analytics', href:'pages/performance-analytics.html'}]},
   {title:'EXAMPLES & CODE SAMPLES', items:[{title:'Examples', href:'pages/examples.html'},{title:'Code Snippets', href:'pages/code-samples.html'}]},
   {title:'API REFERENCE', items:[{title:'REST APIs', href:'pages/api.html'},{title:'SDK Reference', href:'pages/sdk-reference.html'}]},
   {title:'BEST PRACTICES', items:[{title:'Instrumentation Best Practices', href:'pages/best-practices.html'},{title:'Sampling Strategies', href:'pages/sampling.html'}]},
