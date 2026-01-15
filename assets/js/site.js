@@ -4,7 +4,6 @@ const NAV = [
   {title:'', items:[{title:"What's New", href:'pages/whats-new.html'}]},
   {title:'', items:[{title:'Release Notes', href:'pages/release-notes.html'}]},
   {title:'Setup', items:[{title:'Setup by Compute Type', href:'pages/setup-by-compute.html'},{title:'Setup by Language', href:'pages/setup-by-language.html'}]},
-  {title:'CONCEPTS & FUNDAMENTALS', items:[{title:'Core Concepts', href:'pages/concepts.html'},{title:'Instrumentation', href:'pages/instrumentation.html'},{title:'Data Model', href:'pages/data-model.html'}]},
   {title:'IMPLEMENTATION GUIDES', items:[{title:'Instrumentation', href:'pages/implementation.html'},{title:'Language-Specific Guides', href:'pages/language-guides.html'},{title:'Service Integration', href:'pages/service-integration.html'}]},
   {title:'FEATURES & CAPABILITIES', items:[{title:'Distributed Tracing', href:'pages/features.html'},{title:'Application Map', href:'pages/application-map.html'},{title:'Performance Analytics', href:'pages/performance-analytics.html'}]},
   {title:'EXAMPLES & CODE SAMPLES', items:[{title:'Examples', href:'pages/examples.html'},{title:'Code Snippets', href:'pages/code-samples.html'}]},
