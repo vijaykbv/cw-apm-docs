@@ -1,4 +1,5 @@
 const NAV = [
+  // Updated navigation with Application Map
   {title:'HOME', items:[{title:'Overview', href:'index.html'},{title:"What's New", href:'pages/whats-new.html'},{title:'Release Notes', href:'pages/release-notes.html'}]},
   {title:'GETTING STARTED', items:[{title:'Introduction', href:'pages/getting-started.html'},{title:'Quick Start', href:'pages/quick-start.html'},{title:'Setup by Compute Type', href:'pages/setup-by-compute.html'},{title:'Setup by Language', href:'pages/setup-by-language.html'}]},
   {title:'CONCEPTS & FUNDAMENTALS', items:[{title:'Core Concepts', href:'pages/concepts.html'},{title:'Instrumentation', href:'pages/instrumentation.html'},{title:'Data Model', href:'pages/data-model.html'}]},
