@@ -12,8 +12,193 @@
     <main class="content">
       <header><h1>Implementation Guides</h1></header>
       <article>
-        <h2>Instrumentation</h2>
-        <p>Automatic and manual instrumentation options, including ADOT and OpenTelemetry SDKs.</p>
+        <section>
+          <h2>Instrumentation</h2>
+          <p>Instrumentation is the process of adding observability capabilities to your applications. CloudWatch Application Signals supports multiple instrumentation approaches to fit different use cases and preferences.</p>
+        </section>
+
+        <section>
+          <h3>Auto-Instrumentation</h3>
+          <p>Auto-instrumentation requires no code changes and is the recommended approach for getting started quickly.</p>
+          
+          <h4>Supported Runtimes:</h4>
+          <ul>
+            <li><strong>Java:</strong> JVM-based applications (Spring Boot, Tomcat, etc.)</li>
+            <li><strong>Python:</strong> Django, Flask, and other Python web frameworks</li>
+            <li><strong>.NET:</strong> ASP.NET Core applications</li>
+            <li><strong>Node.js:</strong> Express.js and other Node.js frameworks</li>
+          </ul>
+          
+          <h4>How It Works:</h4>
+          <p>The Application Signals agent automatically instruments common libraries and frameworks, capturing traces, metrics, and logs without requiring any application code changes.</p>
+        </section>
+
+        <section>
+          <h3>Manual Instrumentation with OpenTelemetry</h3>
+          <p>For fine-grained control and custom instrumentation, use the OpenTelemetry SDKs directly in your code.</p>
+          
+          <h4>Benefits:</h4>
+          <ul>
+            <li>Complete control over what gets instrumented</li>
+            <li>Custom spans and attributes</li>
+            <li>Vendor-neutral approach</li>
+            <li>Works across different observability platforms</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>AWS Distro for OpenTelemetry (ADOT)</h3>
+          <p>AWS-optimized distribution of OpenTelemetry that provides seamless integration with CloudWatch services.</p>
+          
+          <h4>Features:</h4>
+          <ul>
+            <li>Pre-configured for AWS services</li>
+            <li>Automatic AWS metadata collection</li>
+            <li>Optimized for CloudWatch Application Signals</li>
+            <li>Support for Lambda, ECS, EKS, and EC2</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Language-Specific Guides</h2>
+          <p>Detailed implementation guides for each supported programming language.</p>
+        </section>
+
+        <section>
+          <h3>Java Applications</h3>
+          <h4>Auto-Instrumentation:</h4>
+          <pre><code>java -javaagent:/path/to/aws-opentelemetry-agent.jar -jar your-app.jar</code></pre>
+          
+          <h4>Manual Instrumentation:</h4>
+          <pre><code>import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.api.trace.Span;
+
+// Create custom spans
+Span span = tracer.spanBuilder("custom-operation").startSpan();
+try {
+    // Your code here
+} finally {
+    span.end();
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Python Applications</h3>
+          <h4>Auto-Instrumentation:</h4>
+          <pre><code>opentelemetry-distro opentelemetry-instrumentation python your_app.py</code></pre>
+          
+          <h4>Manual Instrumentation:</h4>
+          <pre><code>from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+tracer = trace.get_tracer(__name__)
+
+with tracer.start_as_span("custom-operation") as span:
+    # Your code here
+    span.set_attribute("custom.attribute", "value")</code></pre>
+        </section>
+
+        <section>
+          <h3>.NET Applications</h3>
+          <h4>Auto-Instrumentation:</h4>
+          <pre><code>dotnet run --additional-deps /path/to/aws-opentelemetry-agent</code></pre>
+          
+          <h4>Manual Instrumentation:</h4>
+          <pre><code>using OpenTelemetry.Trace;
+
+using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddSource("MyCompany.MyProduct.MyLibrary")
+    .AddConsoleExporter()
+    .Build();
+
+var tracer = tracerProvider.GetTracer("MyCompany.MyProduct.MyLibrary");
+
+using var span = tracer.StartActiveSpan("custom-operation");
+{
+    // Your code here
+    span.SetAttribute("custom.attribute", "value");
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Node.js Applications</h3>
+          <h4>Auto-Instrumentation:</h4>
+          <pre><code>node --require @aws/opentelemetry-auto-instrumentation your_app.js</code></pre>
+          
+          <h4>Manual Instrumentation:</h4>
+          <pre><code>const { trace } = require('@opentelemetry/api');
+
+const tracer = trace.getTracer('my-service');
+
+const span = tracer.startSpan('custom-operation');
+span.setAttribute('custom.attribute', 'value');
+// Your code here
+span.end();</code></pre>
+        </section>
+
+        <section>
+          <h2>Service Integration</h2>
+          <p>Integrate Application Signals with your existing AWS services and infrastructure.</p>
+        </section>
+
+        <section>
+          <h3>Amazon ECS</h3>
+          <p>Enable Application Signals for containerized applications running on Amazon ECS.</p>
+          
+          <h4>Prerequisites:</h4>
+          <ul>
+            <li>ECS cluster with EC2 or Fargate launch type</li>
+            <li>Task execution role with appropriate permissions</li>
+            <li>Application running on supported runtime</li>
+          </ul>
+          
+          <h4>Enable Application Signals:</h4>
+          <ol>
+            <li>Update your task definition to include the Application Signals sidecar</li>
+            <li>Add the required environment variables</li>
+            <li>Deploy the updated task definition</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Amazon EKS</h3>
+          <p>Deploy Application Signals on Kubernetes clusters using the AWS Distro for OpenTelemetry Operator.</p>
+          
+          <h4>Installation Steps:</h4>
+          <ol>
+            <li>Install the ADOT Operator using Helm</li>
+            <li>Create an Instrumentation resource</li>
+            <li>Annotate your deployments to enable auto-instrumentation</li>
+            <li>Verify data collection in CloudWatch</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>AWS Lambda</h3>
+          <p>Monitor serverless functions with Application Signals.</p>
+          
+          <h4>Enable Application Signals:</h4>
+          <ol>
+            <li>Add the AWS managed Lambda layer for OpenTelemetry</li>
+            <li>Configure environment variables for tracing</li>
+            <li>Update function permissions if needed</li>
+          </ol>
+          
+          <p>Lambda functions automatically get traces and metrics without code changes when using supported runtimes.</p>
+        </section>
+
+        <section>
+          <h3>Amazon EC2</h3>
+          <p>Monitor applications running directly on EC2 instances.</p>
+          
+          <h4>Deployment Options:</h4>
+          <ul>
+            <li><strong>Auto-Instrumentation:</strong> Install the Application Signals agent on your instances</li>
+            <li><strong>Sidecar Pattern:</strong> Run the collector as a sidecar container</li>
+            <li><strong>Manual Instrumentation:</strong> Use OpenTelemetry SDKs in your application code</li>
+          </ul>
+        </section>
       </article>
     </main>
   </div>

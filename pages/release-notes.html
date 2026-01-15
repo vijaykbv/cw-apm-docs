@@ -12,8 +12,210 @@
     <main class="content">
       <header><h1>Release Notes</h1></header>
       <article>
-        <h2>Version History</h2>
-        <p>Track recent releases and deprecations.</p>
+        <section>
+          <h2>Latest Release: v1.2.0 (January 15, 2026)</h2>
+          
+          <h3>New Features</h3>
+          <ul>
+            <li><strong>Enhanced Service Map:</strong> Improved visualization with real-time dependency updates</li>
+            <li><strong>AI-Powered Insights:</strong> Machine learning-based anomaly detection and root cause analysis</li>
+            <li><strong>Custom Dashboards:</strong> Drag-and-drop dashboard builder with pre-built templates</li>
+            <li><strong>Advanced Filtering:</strong> Complex query builder for trace and metric analysis</li>
+            <li><strong>Multi-Region Support:</strong> Cross-region trace correlation and service discovery</li>
+          </ul>
+          
+          <h3>Improvements</h3>
+          <ul>
+            <li>Reduced instrumentation overhead by 30%</li>
+            <li>Improved sampling accuracy for high-throughput applications</li>
+            <li>Enhanced error correlation across services</li>
+            <li>Better support for microservices architectures</li>
+          </ul>
+          
+          <h3>Bug Fixes</h3>
+          <ul>
+            <li>Fixed context propagation issues in async operations</li>
+            <li>Resolved memory leaks in long-running applications</li>
+            <li>Corrected timestamp handling in distributed traces</li>
+            <li>Fixed RUM data collection in Safari browsers</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>v1.1.5 (December 10, 2025)</h2>
+          
+          <h3>New Features</h3>
+          <ul>
+            <li><strong>RUM Integration:</strong> Real User Monitoring for web applications</li>
+            <li><strong>Synthetics Monitoring:</strong> Automated canary testing</li>
+            <li><strong>Custom Metrics:</strong> User-defined metrics and KPIs</li>
+          </ul>
+          
+          <h3>Improvements</h3>
+          <ul>
+            <li>Enhanced auto-instrumentation for Node.js applications</li>
+            <li>Improved trace search performance</li>
+            <li>Better error handling and reporting</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>v1.1.0 (November 5, 2025)</h2>
+          
+          <h3>New Features</h3>
+          <ul>
+            <li><strong>Application Signals Launch:</strong> Unified observability platform</li>
+            <li><strong>Zero-Code Instrumentation:</strong> Automatic service discovery</li>
+            <li><strong>Intelligent Alerting:</strong> AI-powered anomaly detection</li>
+            <li><strong>Service Level Objectives:</strong> SLO tracking and alerting</li>
+          </ul>
+          
+          <h3>Breaking Changes</h3>
+          <ul>
+            <li>Deprecated X-Ray direct integration in favor of Application Signals</li>
+            <li>Updated API endpoints for service operations</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>v1.0.0 (September 15, 2025)</h2>
+          
+          <h3>Initial Release</h3>
+          <ul>
+            <li><strong>Distributed Tracing:</strong> End-to-end request tracing</li>
+            <li><strong>Service Maps:</strong> Automatic dependency visualization</li>
+            <li><strong>Performance Metrics:</strong> Golden signals monitoring</li>
+            <li><strong>OpenTelemetry Support:</strong> Vendor-neutral instrumentation</li>
+            <li><strong>AWS Integration:</strong> Native support for ECS, EKS, Lambda, and EC2</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Upcoming Features</h2>
+          
+          <h3>Q1 2026</h3>
+          <ul>
+            <li>Log correlation with traces and metrics</li>
+            <li>Advanced analytics and reporting</li>
+            <li>Custom alerting rules engine</li>
+          </ul>
+          
+          <h3>Q2 2026</h3>
+          <ul>
+            <li>Machine learning-based predictive monitoring</li>
+            <li>Automated remediation workflows</li>
+            <li>Enhanced multi-cloud support</li>
+          </ul>
+          
+          <h3>Q3 2026</h3>
+          <ul>
+            <li>Real-time collaboration features</li>
+            <li>Advanced compliance and audit capabilities</li>
+            <li>Integration with third-party APM tools</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Deprecation Notices</h2>
+          
+          <h3>End of Support</h3>
+          <ul>
+            <li><strong>X-Ray Classic Console:</strong> Deprecated as of v1.1.0, end of support March 2026</li>
+            <li><strong>Legacy Sampling Rules:</strong> Migrate to Application Signals sampling by February 2026</li>
+          </ul>
+          
+          <h3>Migration Guides</h3>
+          <ul>
+            <li><a href="#migration-xray">Migrating from X-Ray to Application Signals</a></li>
+            <li><a href="#migration-third-party">Migrating from Third-Party APM</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Known Issues</h2>
+          
+          <h3>Current Limitations</h3>
+          <ul>
+            <li>Cross-account service maps may show incomplete data</li>
+            <li>RUM data collection limited to HTTPS sites</li>
+            <li>Synthetic canaries may timeout on complex scripts</li>
+            <li>High-cardinality metrics may impact performance</li>
+          </ul>
+          
+          <h3>Workarounds</h3>
+          <ul>
+            <li>Use service-specific queries for cross-account scenarios</li>
+            <li>Implement custom RUM collection for HTTP sites</li>
+            <li>Break complex canaries into smaller, focused tests</li>
+            <li>Implement metric aggregation to reduce cardinality</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Version Compatibility</h2>
+          
+          <h3>Supported Runtimes</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Runtime</th>
+                <th>Minimum Version</th>
+                <th>Recommended Version</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Java</td>
+                <td>8</td>
+                <td>17+</td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td>3.8</td>
+                <td>3.11+</td>
+              </tr>
+              <tr>
+                <td>Node.js</td>
+                <td>14</td>
+                <td>18+</td>
+              </tr>
+              <tr>
+                <td>.NET</td>
+                <td>3.1</td>
+                <td>6.0+</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3>AWS Service Compatibility</h3>
+          <ul>
+            <li>ECS: All versions supported</li>
+            <li>EKS: Kubernetes 1.19+</li>
+            <li>Lambda: All runtimes supported</li>
+            <li>EC2: Amazon Linux 2, Ubuntu 18.04+</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Security Updates</h2>
+          
+          <h3>v1.2.0 Security Patches</h3>
+          <ul>
+            <li>Fixed potential information disclosure in trace metadata</li>
+            <li>Updated OpenSSL to 3.0.8 for improved security</li>
+            <li>Enhanced IAM permission validation</li>
+            <li>Added support for customer-managed KMS keys</li>
+          </ul>
+          
+          <h3>Security Best Practices</h3>
+          <ul>
+            <li>Regularly rotate access keys and tokens</li>
+            <li>Use least-privilege IAM policies</li>
+            <li>Enable encryption at rest and in transit</li>
+            <li>Monitor for unusual access patterns</li>
+            <li>Keep instrumentation libraries updated</li>
+          </ul>
+        </section>
       </article>
     </main>
   </div>
