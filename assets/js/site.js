@@ -3,7 +3,6 @@ const NAV = [
   {title:'', items:[{title:'Getting Started', href:'pages/getting-started.html'}]},
   {title:'', items:[{title:"What's New", href:'pages/whats-new.html'}]},
   {title:'', items:[{title:'Release Notes', href:'pages/release-notes.html'}]},
-  {title:'Setup', items:[{title:'Setup by Compute Type', href:'pages/setup-by-compute.html'},{title:'Setup by Language', href:'pages/setup-by-language.html'}]},
   {title:'IMPLEMENTATION GUIDES', items:[{title:'Instrumentation', href:'pages/implementation.html'},{title:'Language-Specific Guides', href:'pages/language-guides.html'},{title:'Service Integration', href:'pages/service-integration.html'}]},
   {title:'FEATURES & CAPABILITIES', items:[{title:'Auto Discovery', href:'pages/auto-discovery.html'},{title:'Auto Instrumentation', href:'pages/auto-instrumentation.html'},{title:'Dashboards', href:'pages/dashboards.html'},{title:'Distributed Tracing', href:'pages/features.html'},{title:'Application Map', href:'pages/application-map.html'},{title:'Performance Analytics', href:'pages/performance-analytics.html'},{title:'Searching and analyzing spans', href:'pages/searching-spans.html'},{title:'Service Level Objectives (SLOs)', href:'pages/slos.html'},{title:'Synthetic Monitoring (Canaries)', href:'pages/synthetic-monitoring.html'},{title:'RUM', href:'pages/rum.html'},{title:'Generative AI observability', href:'pages/generative-ai.html'}]},
   {title:'EXAMPLES & CODE SAMPLES', items:[{title:'Examples', href:'pages/examples.html'},{title:'Code Snippets', href:'pages/code-samples.html'}]},
