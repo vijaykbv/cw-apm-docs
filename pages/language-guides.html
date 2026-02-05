@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Language-Specific Guides — CloudWatch APM</title>
+  <base href="/cw-apm-docs/">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="logo">CloudWatch APM Documentation</a>
+  </header>
+  <div class="site">
+    <aside class="left-nav" id="left-nav"></aside>
+    <main class="content">
+      <header><h1>Language-Specific Guides</h1></header>
+      <article>
+        <div id="markdown-content">Loading language guides…</div>
+      </article>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    (() => {
+      const target = document.getElementById('markdown-content');
+      const mdPath = 'language-guides/index.md';
+
+      fetch(mdPath)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`Failed to load ${mdPath} (${res.status})`);
+          }
+          return res.text();
+        })
+        .then((md) => {
+          if (window.marked) {
+            target.innerHTML = marked.parse(md);
+          } else {
+            const pre = document.createElement('pre');
+            pre.textContent = md;
+            target.innerHTML = '';
+            target.appendChild(pre);
+          }
+        })
+        .catch((err) => {
+          target.innerHTML = `<p>Unable to load language guides content.</p><p>${err.message}</p>`;
+        });
+    })();
+  </script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
