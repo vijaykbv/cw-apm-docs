@@ -20,11 +20,130 @@
       </article>
     </main>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     (() => {
       const target = document.getElementById('markdown-content');
       const mdPath = 'language-guides/index.md';
+
+      const escapeHtml = (str) => str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+      const renderInline = (line) => {
+        return escapeHtml(line)
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+      };
+
+      const renderTable = (lines, start) => {
+        const header = lines[start].trim();
+        const divider = lines[start + 1].trim();
+        if (!header.includes('|') || !divider.match(/^\|?\s*:?[-]+/)) {
+          return null;
+        }
+        const rows = [];
+        let i = start;
+        while (i < lines.length && lines[i].trim().includes('|')) {
+          rows.push(lines[i]);
+          i += 1;
+        }
+        const parseRow = (row) => row
+          .trim()
+          .replace(/^\|/, '')
+          .replace(/\|$/, '')
+          .split('|')
+          .map((cell) => renderInline(cell.trim()));
+
+        const headCells = parseRow(rows[0]);
+        const bodyRows = rows.slice(2).map(parseRow);
+
+        let html = '<table><thead><tr>';
+        headCells.forEach((cell) => { html += `<th>${cell}</th>`; });
+        html += '</tr></thead><tbody>';
+        bodyRows.forEach((row) => {
+          html += '<tr>';
+          row.forEach((cell) => { html += `<td>${cell}</td>`; });
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+        return { html, nextIndex: i };
+      };
+
+      const renderMarkdown = (md) => {
+        const lines = md.split(/\r?\n/);
+        let html = '';
+        let i = 0;
+        let inUl = false;
+        let inOl = false;
+
+        const closeLists = () => {
+          if (inUl) { html += '</ul>'; inUl = false; }
+          if (inOl) { html += '</ol>'; inOl = false; }
+        };
+
+        while (i < lines.length) {
+          const line = lines[i];
+          const trimmed = line.trim();
+
+          if (!trimmed) {
+            closeLists();
+            i += 1;
+            continue;
+          }
+
+          if (trimmed === '---') {
+            closeLists();
+            html += '<hr />';
+            i += 1;
+            continue;
+          }
+
+          const table = renderTable(lines, i);
+          if (table) {
+            closeLists();
+            html += table.html;
+            i = table.nextIndex;
+            continue;
+          }
+
+          const headingMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
+          if (headingMatch) {
+            closeLists();
+            const level = headingMatch[1].length;
+            html += `<h${level}>${renderInline(headingMatch[2])}</h${level}>`;
+            i += 1;
+            continue;
+          }
+
+          const ulMatch = trimmed.match(/^[-*]\s+(.*)$/);
+          if (ulMatch) {
+            if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
+            html += `<li>${renderInline(ulMatch[1])}</li>`;
+            i += 1;
+            continue;
+          }
+
+          const olMatch = trimmed.match(/^\d+\.\s+(.*)$/);
+          if (olMatch) {
+            if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
+            html += `<li>${renderInline(olMatch[1])}</li>`;
+            i += 1;
+            continue;
+          }
+
+          closeLists();
+          html += `<p>${renderInline(trimmed)}</p>`;
+          i += 1;
+        }
+
+        closeLists();
+        return html;
+      };
 
       fetch(mdPath)
         .then((res) => {
@@ -34,14 +153,8 @@
           return res.text();
         })
         .then((md) => {
-          if (window.marked) {
-            target.innerHTML = marked.parse(md);
-          } else {
-            const pre = document.createElement('pre');
-            pre.textContent = md;
-            target.innerHTML = '';
-            target.appendChild(pre);
-          }
+          const cleaned = md.replace(/^---[\s\S]*?---\s*/,'');
+          target.innerHTML = renderMarkdown(cleaned);
         })
         .catch((err) => {
           target.innerHTML = `<p>Unable to load language guides content.</p><p>${err.message}</p>`;

@@ -1,14 +1,3 @@
----
-title: "Language-Specific Implementation Guides"
-description: "Step-by-step guides for implementing AWS Application Signals and CloudWatch APM across all major programming languages and frameworks"
-audience: ["developer"]
-difficulty: "intermediate"
-category: "implementation"
-tags: ["instrumentation", "languages", "application-signals", "cloudwatch"]
-estimatedReadTime: 5
-lastUpdated: "2026-01-26"
-relatedPages: ["getting-started", "quick-start", "examples"]
----
 
 # Language-Specific Implementation Guides
 
@@ -18,7 +7,7 @@ Step-by-step implementation guides for AWS Application Signals and CloudWatch AP
 
 
 
-#### ☕ [Java Available](java-lambda.md)
+#### ☕ [Java](java-lambda.md)
 Deploy Java Lambda functions with Application Signals auto-instrumentation using AWS Lambda layers.
 
 **Time to complete:** 15-20 minutes
@@ -27,7 +16,7 @@ Deploy Java Lambda functions with Application Signals auto-instrumentation using
 
 ---
 
-#### 🔷 [.NET Available](dotnet-lambda.md)
+#### 🔷 [.NET](dotnet-lambda.md)
 Deploy .NET Lambda functions with Application Signals using the AWS Lambda layer for OpenTelemetry.
 
 **Time to complete:** 15-20 minutes
@@ -36,7 +25,7 @@ Deploy .NET Lambda functions with Application Signals using the AWS Lambda layer
 
 ---
 
-#### 🐍 [Python Available](python-lambda.md)
+#### 🐍 [Python](python-lambda.md)
 Deploy Python Lambda functions with automatic Application Signals instrumentation via Lambda layers.
 
 **Time to complete:** 15-20 minutes
@@ -45,7 +34,7 @@ Deploy Python Lambda functions with automatic Application Signals instrumentatio
 
 ---
 
-#### 🟢 [Node.js Available](nodejs-lambda.md)
+#### 🟢 [Node.js](nodejs-lambda.md)
 Deploy Node.js Lambda functions with AWS Application Signals using the official Lambda layer.
 
 **Time to complete:** 15-20 minutes
@@ -56,7 +45,7 @@ Deploy Node.js Lambda functions with AWS Application Signals using the official 
 
 ### 🐳 Amazon ECS
 
-#### ☕ [Java Available](java-ecs.md)
+#### ☕ [Java](java-ecs.md)
 Deploy Java Spring Boot applications on ECS Fargate with Application Signals. Pure AWS CLI approach.
 
 **Time to complete:** 30-45 minutes
@@ -65,7 +54,7 @@ Deploy Java Spring Boot applications on ECS Fargate with Application Signals. Pu
 
 ---
 
-#### 🔷 [.NET Available](dotnet-ecs.md)
+#### 🔷 [.NET](dotnet-ecs.md)
 Deploy ASP.NET Core applications on ECS with Application Signals auto-instrumentation.
 
 **Time to complete:** 30-45 minutes
@@ -74,7 +63,7 @@ Deploy ASP.NET Core applications on ECS with Application Signals auto-instrument
 
 ---
 
-#### 🐍 [Python Available](python-ecs.md)
+#### 🐍 [Python](python-ecs.md)
 Deploy Python FastAPI/Flask applications on ECS Fargate with Application Signals.
 
 **Time to complete:** 30-45 minutes
@@ -83,7 +72,7 @@ Deploy Python FastAPI/Flask applications on ECS Fargate with Application Signals
 
 ---
 
-#### 🟢 [Node.js Available](nodejs-ecs.md)
+#### 🟢 [Node.js](nodejs-ecs.md)
 Deploy Node.js Express applications on ECS with complete Application Signals setup.
 
 **Time to complete:** 30-45 minutes
@@ -94,7 +83,7 @@ Deploy Node.js Express applications on ECS with complete Application Signals set
 
 ### ☸️ Amazon EKS
 
-#### ☕ [Java Available](java-eks.md)
+#### ☕ [Java](java-eks.md)
 Deploy Java microservices on EKS with Application Signals using ADOT Operator.
 
 **Time to complete:** 45-60 minutes
@@ -103,7 +92,7 @@ Deploy Java microservices on EKS with Application Signals using ADOT Operator.
 
 ---
 
-#### 🔷 [.NET Available](dotnet-eks.md)
+#### 🔷 [.NET](dotnet-eks.md)
 Deploy .NET applications on EKS with Application Signals and automatic instrumentation.
 
 **Time to complete:** 45-60 minutes
@@ -112,7 +101,7 @@ Deploy .NET applications on EKS with Application Signals and automatic instrumen
 
 ---
 
-#### 🐍 [Python Available](python-eks.md)
+#### 🐍 [Python](python-eks.md)
 Deploy Python applications on EKS with Application Signals using ADOT collector.
 
 **Time to complete:** 45-60 minutes
@@ -121,7 +110,7 @@ Deploy Python applications on EKS with Application Signals using ADOT collector.
 
 ---
 
-#### 🟢 [Node.js Available](nodejs-eks.md)
+#### 🟢 [Node.js](nodejs-eks.md)
 Deploy Node.js microservices on EKS with complete Application Signals instrumentation.
 
 **Time to complete:** 45-60 minutes
